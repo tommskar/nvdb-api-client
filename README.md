@@ -15,10 +15,10 @@ def nvdbVersion = "1.17.2"
 def slfVersion = "1.7.30"
 
 dependencies {
-    compile "no.vegvesen.nvdb:nvdb-read-api-v3-client:$nvdbVersion"
-    compile "javax.activation:activation:1.1"
-    compile "org.slf4j:slf4j-api:$slfVersion"
-    compile "org.slf4j:slf4j-simple:$slfVersion"
+    implementation "no.vegvesen.nvdb:nvdb-read-api-v3-client:$nvdbVersion"
+    implementation "jakarta.activation:jakarta.activation-api:1.2.2"
+    implementation "org.slf4j:slf4j-api:$slfVersion"
+    implementation "org.slf4j:slf4j-simple:$slfVersion"
 }
 
 ```

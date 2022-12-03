@@ -35,8 +35,8 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -80,7 +80,7 @@ public final class ClientFactory implements AutoCloseable {
     private final Logger debugLogger;
     private final PoolingHttpClientConnectionManager connectionManager;
     /*
-     * Each of or Clients have their own {@code javax.ws.rs.client.Client}, that share a
+     * Each of or Clients have their own {@code jakarta.ws.rs.client.Client}, that share a
      * {@code org.apache.http.impl.conn.PoolingHttpClientConnectionManager}.
      * If {@code close()} is called on our client, the connection manager is shutdown.
      */
@@ -407,10 +407,10 @@ public final class ClientFactory implements AutoCloseable {
         }
 
         return ClientBuilder.newBuilder()
-            .withConfig(
-                clientConfigCustomizer.apply(config)
-            )
-            .build();
+                .withConfig(
+                        clientConfigCustomizer.apply(config)
+                )
+                .build();
     }
 
     @Override

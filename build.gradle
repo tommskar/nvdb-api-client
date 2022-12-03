@@ -4,8 +4,7 @@ plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.9.3'  // do not update past 2 due to SSH errors on windows.
     id 'java-library'
     id 'maven-publish'
-    id 'maven'
-    id 'signing'
+    id 'distribution'
 }
 
 apply from: "gradle/repositories.gradle"
@@ -13,7 +12,6 @@ apply from: "gradle/tasks.gradle"
 apply from: "gradle/versioning.gradle"
 apply from: "gradle/git.gradle"
 apply from: "gradle/publish.gradle"
-apply from: "gradle/upload.gradle"
 
 group = "no.vegvesen.nvdb"
 archivesBaseName = "nvdb-read-api-v3-client"
@@ -22,10 +20,10 @@ dependencies {
     api "com.google.code.gson:gson:2.8.6"
     api "org.slf4j:slf4j-api:1.7.25"
 
-    implementation 'javax.activation:activation:1.1.1'
-    implementation "org.glassfish.jersey.core:jersey-client:2.32"
-    implementation "org.glassfish.jersey.connectors:jersey-apache-connector:2.32"
-    implementation "org.glassfish.jersey.inject:jersey-hk2:2.32"
+    implementation "jakarta.activation:jakarta.activation-api:1.2.2"
+    implementation "org.glassfish.jersey.core:jersey-client:3.0.2"
+    implementation "org.glassfish.jersey.connectors:jersey-apache-connector:3.0.2"
+    implementation "org.glassfish.jersey.inject:jersey-hk2:3.0.2"
     api "io.projectreactor:reactor-core:3.2.6.RELEASE"
 
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
@@ -51,10 +49,6 @@ artifacts {
     archives javadocJar
 }
 
-signing {
-    sign configurations.archives
-}
-
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 [compileJava, compileTestJava]*.options*.encoding = "UTF-8"
