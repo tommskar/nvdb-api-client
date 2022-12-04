@@ -32,6 +32,8 @@ public class SpatialAttributeType extends AttributeType {
     private final SpatialType spatialType;
     private final int dimensions;
     private final boolean insideparent;
+    private final double reqAccuracyPlan;
+    private final double reqAccuracyHeight;
 
     public SpatialAttributeType(AttributeCommonProperties props,
                                 SpatialType spatialType,
@@ -41,6 +43,8 @@ public class SpatialAttributeType extends AttributeType {
         this.spatialType = spatialType;
         this.dimensions = dimensions;
         this.insideparent = insideparent;
+        this.reqAccuracyPlan = props.getReqaccuracyplan();
+        this.reqAccuracyHeight = props.getReqaccuracyheight();
     }
 
     public SpatialType getSpatialType() {
@@ -54,4 +58,13 @@ public class SpatialAttributeType extends AttributeType {
     public boolean isInsideparent() {
         return insideparent;
     }
+
+    public double getReqAccuracyPlan() {
+        return reqAccuracyPlan;
+    }
+
+    public double getReqAccuracyHeight() {
+        return reqAccuracyHeight;
+    }
+
 }
