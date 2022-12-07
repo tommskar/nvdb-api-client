@@ -55,6 +55,7 @@ public final class FeatureTypeParser {
             parseLocationalAttribute(dataTypes, obj),
             parseStringMember(obj, "status"),
             parseStringMember(obj, "hovedkategori"),
+            parseBooleanMember(obj, "tidsrom_relevant"),
             parseBooleanMember(obj, "en_versjon"),
             parseBooleanMember(obj, "abstrakt_type"),
             parseBooleanMember(obj, "avledet"),

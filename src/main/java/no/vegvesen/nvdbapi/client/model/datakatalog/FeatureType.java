@@ -49,6 +49,8 @@ public final class FeatureType implements Serializable {
 
     private final String status;
     private final String mainCategory;
+    private final boolean timeSpanRelevant;
+    private final boolean onlyOneVersion;
     private final boolean abstractType;
     private final boolean derived;
     private final boolean needParent;
@@ -56,7 +58,6 @@ public final class FeatureType implements Serializable {
     private final boolean connectingLinkOk;
     private final String additionalInformasion;
     private final boolean sensitive;
-    private final boolean onlyOneVersion;
 
     public FeatureType(Integer id,
                        String name,
@@ -73,6 +74,7 @@ public final class FeatureType implements Serializable {
                        AttributeType locationalAttribute,
                        String status,
                        String mainCategory,
+                       boolean timeSpanRelevant,
                        boolean onlyOneVersion,
                        boolean abstractType,
                        boolean derived,
@@ -97,6 +99,7 @@ public final class FeatureType implements Serializable {
         this.locationalAttribute = locationalAttribute;
         this.status = status;
         this.mainCategory = mainCategory;
+        this.timeSpanRelevant = timeSpanRelevant;
         this.onlyOneVersion = onlyOneVersion;
         this.abstractType = abstractType;
         this.derived = derived;
@@ -238,16 +241,20 @@ public final class FeatureType implements Serializable {
         return mainCategory;
     }
 
+    public boolean isTimeSpanRelevant() {
+        return timeSpanRelevant;
+    }
+
+    public boolean isOnlyOneVersion() {
+        return onlyOneVersion;
+    }
+
     public boolean isAbstractType() {
         return abstractType;
     }
 
     public String getAdditionalInformasion() {
         return additionalInformasion;
-    }
-
-    public boolean isOnlyOneVersion() {
-        return onlyOneVersion;
     }
 
     public enum PlacementType {
