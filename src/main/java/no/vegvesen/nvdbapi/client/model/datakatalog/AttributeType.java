@@ -121,5 +121,13 @@ public abstract class AttributeType implements Serializable {
         public static Importance from(int value) {
             return Arrays.stream(values()).filter(v -> v.value == value).findAny().orElse(null);
         }
+
+        public int getValue() {
+            return value;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 }
