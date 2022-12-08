@@ -128,7 +128,7 @@ public final class AttributeTypeParser {
             parseTimeMember(object, "standardverdi"),
             parseTimeMember(object, "min_anbefalt"),
             parseTimeMember(object, "maks_anbefalt"),
-            parseStringMember(object, "format"),
+            parseStringMember(object, "feltmønster"),
             parseBooleanMember(object, "ajourhold_snu"),
             parseBooleanMember(object, "lengdeavhengig_verdi"));
     }
@@ -139,7 +139,7 @@ public final class AttributeTypeParser {
             parseIntMember(object, "standardverdi"),
             parseIntMember(object, "min_anbefalt"),
             parseIntMember(object, "maks_anbefalt"),
-            parseStringMember(object, "format"),
+            parseStringMember(object, "feltmønster"),
             parseBooleanMember(object, "ajourhold_snu"),
             parseBooleanMember(object, "lengdeavhengig_verdi"));
     }
@@ -150,7 +150,7 @@ public final class AttributeTypeParser {
             parseDateMember(object, "standardverdi"),
             parseDateMember(object, "min"),
             parseDateMember(object, "maks"),
-            parseStringMember(object, "format"),
+            parseStringMember(object, "feltmønster"),
             parseBooleanMember(object, "ajourhold_snu"),
             parseBooleanMember(object, "lengdeavhengig_verdi"));
     }
@@ -285,7 +285,7 @@ public final class AttributeTypeParser {
             props,
             parseStringMember(object, "standardverdi"),
             parseIntMember(object, "feltlengde"),
-            parseStringMember(object, "format"),
+            parseStringMember(object, "feltmønster"),
             parseBooleanMember(object, "ajourhold_snu"),
             parseBooleanMember(object, "lengdeavhengig_verdi"));
     }
@@ -296,7 +296,7 @@ public final class AttributeTypeParser {
             parseStringMember(object, "standardverdi"),
             parseIntMember(object, "feltlengde"),
             parseEnumValues(object),
-            parseStringMember(object, "format"),
+            parseStringMember(object, "feltmønster"),
             parseBooleanMember(object, "ajourhold_snu"),
             parseBooleanMember(object, "lengdeavhengig_verdi"));
     }
