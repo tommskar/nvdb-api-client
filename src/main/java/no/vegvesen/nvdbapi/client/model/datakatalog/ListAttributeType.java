@@ -8,10 +8,10 @@ public class ListAttributeType extends AttributeType {
 
     public ListAttributeType(AttributeCommonProperties props,
                              AttributeType content,
-                             Integer min, Integer max) {
+                             Integer max, Integer min) {
         super(props);
-        this.min = min;
         this.max = max;
+        this.min = min;
         this.content = content;
     }
 
