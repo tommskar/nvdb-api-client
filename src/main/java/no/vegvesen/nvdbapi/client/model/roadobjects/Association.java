@@ -43,6 +43,10 @@ public class Association {
         this.roadObjects = roadObjects;
     }
 
+    public int getTypeId() {
+        return typeId;
+    }
+
     public int getFeatureTypeId() {
         return featureTypeId;
     }
