@@ -26,55 +26,30 @@
 
 package no.vegvesen.nvdbapi.client.clients;
 
-import no.vegvesen.nvdbapi.client.model.Page;
-
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.Objects.isNull;
+public class TransactionStatusRequest {
 
-public class TransactionsRequest {
+    public static final TransactionStatusRequest DEFAULT = new TransactionStatusRequest.Builder().build();
 
-    public static final TransactionsRequest DEFAULT = new TransactionsRequest.Builder().build();
-
-    private final Page page;
-    private final List<Integer> ider;
     private final LocalDateTime from;
-    private final LocalDateTime to;
     private final Type type;
 
-    private TransactionsRequest(Builder b){
-        this.page = b.page;
-        this.ider = b.ider;
+    private TransactionStatusRequest(Builder b){
         this.from = b.from;
-        this.to = b.to;
         this.type = b.type;
-
     }
 
     public static Builder newBuilder() {
         return new Builder();
     }
 
-    public Page getPage() {
-        return page;
-    }
-
-    public List<Integer> getIder() {
-        return ider;
-    }
-
     public LocalDateTime getFrom() {
         return from;
-    }
-
-    public LocalDateTime getTo() {
-        return to;
     }
 
     public Type getType() {
@@ -83,33 +58,15 @@ public class TransactionsRequest {
 
     public static class Builder{
 
-        private Type type = Type.INDEXED_TRANSACTIONS;
-        private Page page = Page.defaults();
-        private List<Integer> ider = Collections.emptyList();
+        private Type type = Type.LAST_INDEXED_TRANSACTION;
         private LocalDateTime from = null;
-        private LocalDateTime to = null;
 
-        public TransactionsRequest build() {
-            return new TransactionsRequest(this);
-        }
-
-        public Builder withPage(Page page){
-            this.page = page;
-            return this;
-        }
-
-        public Builder withIder(List<Integer> ider){
-            this.ider = ider;
-            return this;
+        public TransactionStatusRequest build() {
+            return new TransactionStatusRequest(this);
         }
 
         public Builder withFrom(LocalDateTime from){
             this.from = from;
-            return this;
-        }
-
-        public Builder withTo(LocalDateTime to){
-            this.to = to;
             return this;
         }
 
@@ -121,8 +78,7 @@ public class TransactionsRequest {
 
     public enum Type {
         NOT_INDEXED_TRANSACTIONS("ikke_indeksert"),
-        LAST_INDEXED_TRANSACTION("sist_indeksert"),
-        INDEXED_TRANSACTIONS("indeksert");
+        LAST_INDEXED_TRANSACTION("sist_indeksert");
 
         private final String type;
         private static Map<String, Type> mapping = Stream.of(Type.values()).collect(Collectors.toMap(k -> k.type.toLowerCase(), Function.identity()));
@@ -136,10 +92,7 @@ public class TransactionsRequest {
         }
 
         public static Type fromTextValue(String type) {
-            if (isNull(type)) return Type.INDEXED_TRANSACTIONS;
-            return mapping.getOrDefault(type.toLowerCase(), INDEXED_TRANSACTIONS);
+            return mapping.getOrDefault(type.toLowerCase(), LAST_INDEXED_TRANSACTION);
         }
     }
-
-
 }
