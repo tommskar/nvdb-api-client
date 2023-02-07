@@ -367,7 +367,8 @@ public final class RoadObjectParser {
     }
 
     private static Association parseAssociation(JsonObject obj) {
-        Integer typeId = parseIntMember(obj, "type.id");
+        Integer typeId = parseIntMember(obj, "id");
+        Integer featureTypeId = parseIntMember(obj, "type.id");
         JsonArray objects = obj.get("vegobjekter").getAsJsonArray();
         Set<RoadObject> roadObjects = StreamSupport.stream(objects.spliterator(), false)
             .map(e -> {
@@ -380,7 +381,7 @@ public final class RoadObjectParser {
                 return ro;
             }).collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(RoadObject::getId))));
 
-        return new Association(typeId, roadObjects);
+        return new Association(typeId, featureTypeId, roadObjects);
     }
 
     public static Statistics parseStatistics(JsonObject obj) {

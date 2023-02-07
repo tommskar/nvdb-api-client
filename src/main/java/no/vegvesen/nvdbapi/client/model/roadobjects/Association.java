@@ -34,15 +34,17 @@ import java.util.stream.Stream;
 public class Association {
 
     private final int typeId;
+    private final int featureTypeId;
     private final Set<RoadObject> roadObjects;
 
-    public Association(int typeId, Set<RoadObject> roadObjects) {
+    public Association(int typeId, int featureTypeId, Set<RoadObject> roadObjects) {
         this.typeId = typeId;
+        this.featureTypeId = featureTypeId;
         this.roadObjects = roadObjects;
     }
 
-    public int getTypeId() {
-        return typeId;
+    public int getFeatureTypeId() {
+        return featureTypeId;
     }
 
     public Set<Long> getFeatureIds() {
@@ -59,7 +61,7 @@ public class Association {
 
     @Override
     public String toString() {
-        return String.format("Association(typeId=%d, features=%s)", typeId, getFeatureIds());
+        return String.format("Association(typeId=%d, featureTypeId=%d, features=%s)", typeId, featureTypeId, getFeatureIds());
     }
 
     @Override
@@ -68,11 +70,12 @@ public class Association {
         if (o == null || getClass() != o.getClass()) return false;
         Association that = (Association) o;
         return typeId == that.typeId &&
+                featureTypeId == that.featureTypeId &&
                 Objects.equals(roadObjects, that.roadObjects);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(typeId, roadObjects);
+        return Objects.hash(typeId, featureTypeId, roadObjects);
     }
 }

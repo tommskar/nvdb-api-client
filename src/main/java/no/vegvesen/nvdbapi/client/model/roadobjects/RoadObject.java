@@ -132,13 +132,13 @@ public class RoadObject {
 
     public Association getParents(int featureTypeId) {
         return parents.stream()
-                .filter(a -> a.getTypeId() == featureTypeId)
+                .filter(a -> a.getFeatureTypeId() == featureTypeId)
                 .findAny().orElse(null);
     }
 
     public Association getChildren(int featureTypeId) {
         return children.stream()
-                .filter(a -> a.getTypeId() == featureTypeId)
+                .filter(a -> a.getFeatureTypeId() == featureTypeId)
                 .findAny().orElse(null);
     }
 
