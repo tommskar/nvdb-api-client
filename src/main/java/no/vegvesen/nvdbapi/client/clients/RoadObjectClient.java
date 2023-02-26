@@ -160,11 +160,15 @@ public class RoadObjectClient extends AbstractJerseyClient {
     }
 
     public RoadObject getRoadObject(int featureTypeId, long featureId) {
-        return getRoadObject(featureTypeId, featureId, DEFAULT);
+        return getRoadObject(featureTypeId, featureId, null, DEFAULT);
     }
 
-    public RoadObject getRoadObject(int featureTypeId, long featureId, RoadObjectRequest request) {
+    public RoadObject getRoadObject(int featureTypeId, long featureId, Integer featureVersion, RoadObjectRequest request) {
         UriBuilder path = start(featureTypeId).path(valueOf(featureId));
+
+        if (featureVersion != null) {
+            path.path(valueOf(featureVersion));
+        }
 
         logger.debug("Invoking {}", path);
         applyRequestParameters(path, convert(request));
