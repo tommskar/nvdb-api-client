@@ -14,7 +14,7 @@ apply from: "gradle/git.gradle"
 apply from: "gradle/publish.gradle"
 
 group = "no.vegvesen.nvdb"
-archivesBaseName = "nvdb-read-api-v3-client"
+archivesBaseName = "nvdb-read-api-v3-jakarta-client"
 
 dependencies {
     api "com.google.code.gson:gson:2.8.6"
